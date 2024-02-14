@@ -36,13 +36,13 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 }
  
 void setup() {
-  // Init Serial Monitor
+  // Initialize Serial Monitor
   Serial.begin(115200);
   while (!Serial)
-  delay(10); // will pause Zero, Leonardo, etc until serial console opens
+  delay(10); // will pause Zero
   Serial.println("Adafruit MPU6050 test!");
 
-  // Inisialisasi sensor MPU-6050
+  // Initialize sensor MPU-6050
   if (!mpu.begin()) {
     Serial.println("Failed to find MPU6050 chip");
     while (1) {
@@ -51,7 +51,7 @@ void setup() {
   }
   Serial.println("MPU6050 Found!");
 
-  // Range perhitungan percepatan (accelerometer) yang dapat dideteksi
+  // Range of accelerometer
   mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
   Serial.print("Accelerometer range set to: ");
   switch (mpu.getAccelerometerRange()) {
@@ -68,7 +68,7 @@ void setup() {
     Serial.println("+-16G");
     break;
   }
-  // Raange perhitungan sensor gyroscope
+  // Range of gyroscope sensor
   mpu.setGyroRange(MPU6050_RANGE_500_DEG);
   Serial.print("Gyro range set to: ");
   switch (mpu.getGyroRange()) {
@@ -85,7 +85,7 @@ void setup() {
     Serial.println("+- 2000 deg/s");
     break;
   }
-  // Pengaturan filter bandwidth
+  // filter bandwidth
   mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
   Serial.print("Filter bandwidth set to: ");
   switch (mpu.getFilterBandwidth()) {
